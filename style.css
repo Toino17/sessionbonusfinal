@@ -178,13 +178,13 @@ a{
     text-align: center;
 }
 
-.listed{
+#listed{
     background-color: green;
-    color: green;
+    
 }
 
-.outlisted{
-    color: red;
+#outlisted{
+    background-color: red;
 }
 
 @media screen and (max-width: 900px){

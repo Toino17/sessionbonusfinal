@@ -123,19 +123,25 @@ include("tableaufilm.php");
         foreach ($listfilm as $film => $value) {
             echo '<form method=\'POST\' class=\'div_film_add\'<p>'. $value['name'] .'</p>';
             if (!in_array($listfilm[$film], $_SESSION['Vosfilms'])) {
-                echo '<input classe=\'listed\' type=\'submit\' name=\''. $film .'1\' value=\'Ajouter à ma liste\'<br></form>';
+                echo '<input type=\'submit\' id=\'listed\' name=\''. $film .'1\' value=\'Ajouter à ma liste\'<br></form>';
             }
             else {
-                echo '<input classe=\'outlisted\' type=\'submit\' name=\''. $film .'2\' value=\'Retirer de ma liste\'<br></form>';
+                echo '<input id=\'outlisted\' type=\'submit\' name=\''. $film .'2\' value=\'Retirer de ma liste\'<br></form>';
             }
             if (isset($_POST[$film .'1'])) {
                 if (!in_array($listfilm[$film], $_SESSION['Vosfilms'])) {
+                    
+
                     array_push($_SESSION['Vosfilms'],($listfilm[$film]));
+                    
+                    
+
                 }
             }
+            
             if (isset($_POST[$film .'2'])) {
-                if (!in_array($listfilm[$film], $_SESSION['Vosfilms'])) {
-                    array_push($_SESSION['Vosfilms'],($listfilm[$film]));
+                if (in_array($listfilm[$film], $_SESSION['Vosfilms'])) {
+                    array_splice($_SESSION['Vosfilms'], $film);
                 }
             }
         }
